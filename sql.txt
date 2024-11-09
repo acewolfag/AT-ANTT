@@ -1,0 +1,37 @@
+CREATE DATABASE demo_injection;
+USE demo_injection;
+
+-- Tạo bảng users
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tạo bảng products
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255), -- Đường dẫn hoặc tên tệp hình ảnh
+    author VARCHAR(100),
+    category VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Thêm dữ liệu mẫu vào bảng users
+INSERT INTO users (username, password, email) VALUES
+('admin', 'admin123', 'admin@example.com'),
+('test', 'test', 'test@example.com'),
+('user1', 'password1', 'user1@example.com');
+
+-- Thêm dữ liệu mẫu vào bảng products
+INSERT INTO products (name, description, price, image, author, category) VALUES
+('The Shore', 'Mô tả ngắn về The Shore', 500.00, 'the_shore.jpg', 'r4w8173', 'Posters'),
+('Mistery', 'Mô tả ngắn về Mistery', 400.00, 'mistery.jpg', 'r4w8173', 'Posters'),
+('The Universe', 'Mô tả ngắn về The Universe', 600.00, 'the_universe.jpg', 'r4w8173', 'Posters'),
+('Walking', 'Mô tả ngắn về Walking', 350.00, 'walking.jpg', 'r4w8173', 'Posters'),
+('Mean', 'Mô tả ngắn về Mean', 450.00, 'mean.jpg', 'r4w8173', 'Posters');
